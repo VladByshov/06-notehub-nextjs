@@ -33,18 +33,23 @@ interface CreateNoteBody {
 export async function fetchNotes(
     params: FetchNotesParams,
 ): Promise<FetchNotesResponse> {
-    const response = await apiClient.get<FetchNotesResponse>(ENDPOINT, {
+    const {data} = await apiClient.get<FetchNotesResponse>(ENDPOINT, {
         params,
     });
-    return response.data;
+    return data;
 }
 
 export async function createNote(body: CreateNoteBody): Promise<Note> {
-    const response = await apiClient.post<Note>(ENDPOINT, body);
-    return response.data;
+    const {data} = await apiClient.post<Note>(ENDPOINT, body);
+    return data;
 }
 
 export async function deleteNote(id: Note["id"]): Promise<Note> {
-    const response = await apiClient.delete<Note>(`${ENDPOINT}/${id}`);
-    return response.data;
+    const {data} = await apiClient.delete<Note>(`${ENDPOINT}/${id}`);
+    return data;
+}
+
+export async function fetchNoteById(id: Note["id"]): Promise<Note> {
+    const {data} = await apiClient.delete<Note>(`${ENDPOINT}/${id}`);
+    return data;
 }
