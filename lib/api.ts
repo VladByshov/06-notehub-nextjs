@@ -50,6 +50,6 @@ export async function deleteNote(id: Note["id"]): Promise<Note> {
 }
 
 export async function fetchNoteById(id: Note["id"]): Promise<Note> {
-    const {data} = await apiClient.delete<Note>(`${ENDPOINT}/${id}`);
+    const {data} = await apiClient.get<Note>(`${ENDPOINT}/${id}`);
     return data;
 }
